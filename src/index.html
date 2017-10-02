@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- load MUI -->
+    <link href="//cdn.muicss.com/mui-0.9.27/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.9.27/js/mui.min.js"></script>
 </head>
 <body>
-    <h1>Init</h1>
+<style>
+    #map {
+        height: 400px;
+    }
+</style>
+<div class="mui-appbar">
+    <!-- content -->
+</div>
+<div class="mui-container">
+    <div id="loader">
+        Loading
+    </div>
+    <div id="map"></div>
+    <form class="mui-form" onsubmit="event.preventDefault(); loc.onSubmit();">
+        <div class="mui--text-subhead">Destination stores:</div>
+        <div class="mui-textfield" id="destination-list">
+        </div>
+        <div class="mui--text-subhead">Origin location:</div>
+        <div class="mui-textfield">
+            <input id="originPoint" type="text" name="origin">
+            <label>Enter your location:</label>
+        </div>
+        <div class="mui--text-center">
+            <button type="submit" class="mui-btn mui-btn--raised">Calculate</button>
+        </div>
+    </form>
+    <div class="mui-panel mui--invisible" id="distanceResult">
+        <!-- content -->
+    </div>
+</div>
 </body>
 </html>
