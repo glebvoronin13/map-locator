@@ -1,4 +1,11 @@
-Run a project:
+Install deps:
 
-npm i
-npm start
+  - npm i
+  
+  Run a project:
+
+  - npm start
+  
+  Create webpack build:
+  
+  - npm run webpack
