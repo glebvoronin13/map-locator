@@ -22,10 +22,10 @@
         Loading
     </div>
     <div id="map"></div>
+    <div class="mui-panel mui--invisible" id="distanceResult">
+        <!-- content -->
+    </div>
     <form class="mui-form" onsubmit="event.preventDefault(); loc.onSubmit();">
-        <div class="mui--text-subhead">Destination stores:</div>
-        <div class="mui-textfield" id="destination-list">
-        </div>
         <div class="mui--text-subhead">Origin location:</div>
         <div class="mui-textfield">
             <input id="originPoint" type="text" name="origin">
@@ -35,8 +35,8 @@
             <button type="submit" class="mui-btn mui-btn--raised">Calculate</button>
         </div>
     </form>
-    <div class="mui-panel mui--invisible" id="distanceResult">
-        <!-- content -->
+    <div class="mui--text-subhead">Destination stores:</div>
+    <div class="mui-textfield" id="destination-list">
     </div>
 </div>
 </body>

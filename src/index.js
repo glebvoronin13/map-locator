@@ -5,10 +5,10 @@ class Locator {
     this.apiReady = false;
     this.destinationList = [
       'Rosenstraße 1 80331 München',
-      'Königsallee 2 40212 Düsseldorf',
+      'City-Galerie Augsburg Willy-Brandt-Platz 1 86153 Augsburg',
+      'Große Bockenheimer Str. 30, 60313 Frankfurt am Main',
       'Kurfürstendamm 26 10719 Berlin',
       'Alstertal-Einkaufszentrum Poppenbüttel 22391 Hamburg',
-      'Kö-Bogen Königsallee 2 40212 Düsseldorf',
     ];
     this.renderDestinationsList();
     window.initMap = this.onApiLoad.bind(this);
@@ -18,11 +18,12 @@ class Locator {
     this.apiReady = !this.apiReady;
     if ( this.apiReady ) {
       document.querySelector('#loader').classList.add('mui--hide');
+    } else {
+      document.querySelector('#loader').classList.remove('mui--hide');
     }
   }
 
   initMap() {
-    this.bounds = new google.maps.LatLngBounds;
     this.markersArray = [];
     this.map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 48.01, lng: 7.2},
@@ -58,7 +59,7 @@ class Locator {
         message.innerHTML = `Origin not recognized or does not exist`;
         break;
       default:
-        message.innerHTML = `error occurred`;
+        message.innerHTML = `Error occurred: ${result.status}`;
         break;
     }
   }
@@ -72,7 +73,6 @@ class Locator {
           destinations: this.destinationList,
           travelMode: 'DRIVING',
         }, (response, status) => {
-          console.log(response, status);
           let results = response.rows[0].elements.map((item, index) => {
             let res = item;
             res.location = response.destinationAddresses[index];
@@ -81,7 +81,6 @@ class Locator {
           });
           results.sort(this.sortByDist);
           this.setResultMessage(results[0]);
-          console.log(results[0]);
           const originList = response.originAddresses;
           const destinationList = response.destinationAddresses;
           for ( const origin of originList ) {
